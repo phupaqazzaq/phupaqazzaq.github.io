@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study ICT at Mahidol University: a page for students from Myanmar</title>
+<meta name="description" content="Student coursework prototype: an English-taught B.Sc. in ICT at Mahidol University, Thailand. World-ranked, one flat fee, close to home.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--dark:#0F3D38;--dark2:#164C46;--green:#0F6B5E;--tint:#E8F2EF;--line:#D3E2DD;--gold:#E8AE2C;--gold2:#F2BE48;--ink:#14302C;--soft:#3F524E;--mute:#566965;--on:#E3EFEB;--tuition:#007F4F;--living:#C47F00;--serif:'Source Serif 4',Georgia,serif;--sans:'Public Sans',Arial,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:#fff;color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.55}
+a{color:var(--green)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:64px 0}
+h1,h2{font-family:var(--serif);font-weight:700;line-height:1.1;color:var(--dark);text-wrap:balance}
+h2{font-size:clamp(30px,4vw,42px);margin-bottom:12px}
+h3{font-size:21px;line-height:1.25;font-weight:700;color:var(--dark)}
+.lead{font-size:clamp(18px,2vw,20px);color:var(--soft);max-width:720px}
+.btn{display:inline-block;font-weight:700;font-size:18px;text-decoration:none;padding:15px 26px;border-radius:10px;transition:background .15s,transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.primary{background:var(--gold);color:var(--ink)}
+.primary:hover{background:var(--gold2)}
+.ghost{background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.75);padding:13px 22px}
+.ghost:hover{background:rgba(255,255,255,.22)}
+
+.notice{background:#14302C;color:var(--on);font-size:14px;text-align:center;padding:6px 16px}
+.hero{position:relative;color:#fff;background:var(--dark);overflow:hidden;padding:0}
+.hero img{position:absolute;top:0;right:0;width:50%;height:100%;object-fit:cover;object-position:50% 80%}
+.hero::after{content:"";position:absolute;top:0;bottom:0;right:0;width:50%;background:linear-gradient(90deg,#0F3D38 0%,rgba(15,61,56,0) 20%)}
+.hero .wrap{position:relative;z-index:1;padding-top:44px;padding-bottom:88px}
+.brand{font-family:var(--serif);font-weight:700;font-size:22px;margin-bottom:46px}
+.brand span{font-family:var(--sans);font-weight:400;font-size:15px;color:var(--on);margin-left:10px}
+.copy{max-width:510px}
+.deadline{display:inline-block;background:var(--gold);color:var(--ink);border-radius:20px;font-size:15px;font-weight:700;padding:5px 14px;margin-bottom:18px}
+.hero h1{color:#fff;font-size:clamp(34px,4.2vw,50px);line-height:1.06;letter-spacing:-.4px}
+.usp{font-size:clamp(18px,2vw,20px);color:var(--on);margin:18px 0 8px}
+.who{font-size:17px;color:var(--on);margin-bottom:24px}
+.actions{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:center}
+
+.proof{padding:0;margin-top:-44px;position:relative;z-index:2}
+.proof ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 26px rgba(15,61,56,.12)}
+.proof li{padding:20px 22px;border-left:1px solid var(--line)}
+.proof li:first-child{border-left:0}
+.proof b{display:block;font-family:var(--serif);font-size:clamp(30px,3.4vw,38px);line-height:1.1;color:var(--green)}
+.proof span{display:block;font-size:15.5px;line-height:1.35;color:var(--soft);margin-top:4px}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.ben{background:var(--tint);border-radius:14px;padding:24px}
+.ben svg{width:38px;height:38px;stroke:var(--green);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;margin-bottom:10px}
+.ben ul{margin-top:9px}
+ul.b{list-style:none;display:flex;flex-direction:column;gap:6px}
+ul.b li{font-size:16.5px;line-height:1.35;color:var(--soft);padding-left:17px;position:relative}
+ul.b li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--green)}
+.wide{margin-top:16px;background:var(--dark);color:#fff;border-radius:14px;padding:26px 28px;display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+.wide h3{color:#fff;font-size:25px;font-family:var(--serif)}
+.wide p{color:var(--on);margin-top:8px;font-size:18px}
+.wide strong{color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips span{font-size:15px;font-weight:600;color:var(--dark);background:#fff;border-radius:16px;padding:4px 12px}
+.wide .fine{font-size:15px;color:var(--on);margin-top:11px}
+
+.home{background:var(--tint)}
+.home .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+.big{font-family:var(--serif);font-weight:700;font-size:clamp(58px,8vw,88px);line-height:1;color:var(--green);margin-bottom:8px}
+.facts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.facts li{background:#fff;border-radius:12px;padding:15px 18px;font-size:16.5px;line-height:1.4;color:var(--soft)}
+.facts b{display:block;color:var(--dark);font-size:18px}
+
+.cost .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.cost ul.b{margin-top:16px}
+.panel{background:var(--tint);border-radius:14px;padding:26px}
+.panel h3{margin-bottom:16px}
+.row{margin-bottom:15px}
+.lab{display:flex;justify-content:space-between;gap:12px;font-size:16px;color:var(--soft);margin-bottom:5px}
+.lab b{color:var(--ink);white-space:nowrap}
+.bar{display:flex;gap:2px;height:30px}
+.bar span{display:block;height:100%}
+.t{background:var(--tuition);border-radius:4px 0 0 4px}
+.l{background:var(--living);border-radius:0 4px 4px 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:15.5px;color:var(--soft)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:7px;vertical-align:-2px}
+.small{font-size:15.5px;color:var(--mute);margin-top:13px}
+
+.req{background:var(--tint)}
+.checks{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.checks li{background:#fff;border-radius:12px;padding:18px}
+.checks p{font-size:16px;line-height:1.4;color:var(--soft);margin-top:4px}
+.heads{margin-top:14px;background:var(--dark);color:#fff;border-radius:12px;padding:15px 20px;font-size:17px}
+.heads b{color:var(--gold)}
+.heads a{color:#fff;font-weight:600}
+
+.path{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px;counter-reset:s}
+.path li{background:var(--tint);border-radius:12px;padding:18px;counter-increment:s}
+.path li::before{content:counter(s);display:flex;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-bottom:9px}
+.when{font-size:15px;font-weight:700;color:#7A5200}
+.path p:last-child{font-size:16px;line-height:1.4;color:var(--soft);margin-top:4px}
+
+.final{background:var(--gold);text-align:center}
+.final h2{color:var(--ink)}
+.final p{font-size:18px;max-width:640px;margin:0 auto 22px}
+.final .primary{background:var(--dark);color:#fff}
+.final .primary:hover{background:var(--dark2)}
+.final .second{display:inline-block;margin-left:14px;font-weight:700;color:var(--ink)}
+.final .contact{font-size:16px;margin:18px auto 0;font-weight:500}
+.final .contact a{color:var(--ink);font-weight:600}
+
+footer{background:var(--dark);color:var(--on);font-size:14px;line-height:1.5;padding:28px 0 32px}
+footer a{color:var(--on)}
+footer p+p{margin-top:8px}
+.sticky{display:none}
+
+@media (max-width:900px){
+  section{padding:48px 0}
+  .hero img{position:static;display:block;width:100%;height:250px;object-position:50% 74%}
+  .hero::after{display:none}
+  .hero .wrap{padding-top:24px}
+  .copy{max-width:none}
+  .brand{margin-bottom:18px}
+  .brand span{display:none}
+  .proof ul{grid-template-columns:1fr 1fr}
+  .proof li:nth-child(3){border-left:0}
+  .proof li:nth-child(n+3){border-top:1px solid var(--line)}
+  .grid,.checks,.path{grid-template-columns:1fr 1fr}
+  .wide,.home .wrap,.cost .wrap{grid-template-columns:1fr;gap:24px}
+  body{padding-bottom:74px}
+  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--dark);padding:10px 16px;z-index:5;box-shadow:0 -4px 16px rgba(0,0,0,.2)}
+  .sticky .btn{display:block;text-align:center;padding:13px}
+}
+@media (max-width:560px){.grid,.checks,.path,.facts{grid-template-columns:1fr}.final .second{display:block;margin:12px 0 0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<p class="notice">Student coursework prototype for ITLG311 Business Communication. Not an official Mahidol University page.</p>
+
+<header class="hero">
+  <img src="https://www.ict.mahidol.ac.th/admissions/wp-content/uploads/2024/09/life-4-scaled-1.jpg" alt="Two students studying together at an outdoor table on the green Mahidol University campus">
+  <div class="wrap">
+    <div class="brand">ICT Mahidol<span>B.Sc. in ICT (International Program)</span></div>
+    <div class="copy">
+      <p class="deadline">Round 2 closes on 31 December 2026</p>
+      <h1>Want a world-ranked ICT degree without going far from home?</h1>
+      <p class="usp">A world-recognised, English-taught ICT degree from one of Thailand’s top two universities, one flat fee, close to home, and a launchpad to funded internships abroad.</p>
+      <p class="who">For students in Myanmar, whether you are finishing school or starting again.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today</a>
+        <a class="btn ghost" href="https://www.ict.mahidol.ac.th/en/wp-content/uploads/2024/09/INFO_Fact-Sheet-MY.pdf">Read our fact sheet in Burmese</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="proof"><div class="wrap">
+  <ul>
+    <li><b>#345</b><span>in the world, QS World University Rankings 2027</span></li>
+    <li><b>8</b><span>specialisation tracks, all taught in English</span></li>
+    <li><b>90,000</b><span>THB flat tuition fee per semester</span></li>
+    <li><b>75</b><span>ICT Mahidol students got internships abroad last year</span></li>
+  </ul>
+</div></div>
+
+<section id="benefits"><div class="wrap">
+  <h2>Gain a degree, skills and experience that travel with you</h2>
+  <p class="lead">Here is what you could take from four years at ICT Mahidol.</p>
+  <div class="grid">
+    <article class="ben">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-4.600 11.500-11 14C9.600 26.500 5 22 5 15V7z"/><path d="M11 16l3.500 3.500L21 13"/></svg>
+      <h3>A degree that counts</h3>
+      <ul class="b">
+        <li>345th in the world (QS 2027)</li>
+        <li>Joint 55th in Asia (QS Asia 2026)</li>
+        <li>AUN-QA Level 6 of 7, for ASEAN standards</li>
+      </ul>
+    </article>
+    <article class="ben">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="16" rx="2.500"/><path d="M11 27h10M16 22v5"/><path d="M12 12l-3 2.500 3 2.500M20 12l3 2.500-3 2.500"/></svg>
+      <h3>Learn by building</h3>
+      <ul class="b">
+        <li>Project-based learning, with theory you put into practice</li>
+        <li>Tracks include AI, Network and Security, and Software Engineering</li>
+      </ul>
+    </article>
+    <article class="ben">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 7h15a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-8l-5 5v-5H5z"/><path d="M27 12v8a3 3 0 0 1-2 2.800V26l-3-3"/></svg>
+      <h3>English for a global career</h3>
+      <ul class="b">
+        <li>Every course taught in English</li>
+        <li>12 credits of language study, including Public Speaking and Academic Writing</li>
+      </ul>
+    </article>
+    <article class="ben">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="11" width="24" height="16" rx="2.500"/><path d="M12 11V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><path d="M4 18h24"/></svg>
+      <h3>A growing digital field</h3>
+      <ul class="b">
+        <li>US$33 billion in digital investment applications in Thailand, first half of 2026</li>
+        <li>International graduates have reportedly worked at Agoda, IBM, KPMG and LINE</li>
+      </ul>
+    </article>
+  </div>
+  <article class="wide">
+    <div>
+      <h3>A launchpad to the world</h3>
+      <p>Last year, 75 ICT Mahidol students got internships at 17 partner universities and institutions in 7 countries, with 5.66 million THB in financial support. <strong>You could be next.</strong></p>
+    </div>
+    <div>
+      <div class="chips"><span>Japan</span><span>Taiwan</span><span>Germany</span><span>Australia</span><span>Malaysia</span><span>South Korea</span><span>China</span></div>
+      <p class="fine">Places are competitive and hosts set minimum grades. Please ask the Faculty about funding for international students.</p>
+    </div>
+  </article>
+</div></section>
+
+<section class="home" id="community"><div class="wrap">
+  <div>
+    <p class="big">17,000+</p>
+    <h2>You will not start alone</h2>
+    <p class="lead">Over 17,000 students from Myanmar are studying in Thai degree programmes in 2025. Join the community who already call Thailand their second home!</p>
+  </div>
+  <!-- TESTIMONIAL SLOT: add a real, approved quote from a Myanmar MUICT student here (Phupa's action item). Do not publish an invented quote. -->
+  <ul class="facts">
+    <li><b>Close to family</b>About 1.5 hours by direct flight from Yangon to Bangkok</li>
+    <li><b>Ready before day one</b>The ICT Preparatory Program runs in June and July</li>
+    <li><b>Support on campus</b>Advisers, academic counselling and a campus nurse</li>
+    <li><b>Life beyond class</b>Clubs for basketball, public speaking, art and makers, plus University dormitories</li>
+  </ul>
+</div></section>
+
+<section class="cost" id="cost"><div class="wrap">
+  <div>
+    <h2>See the full cost before you decide</h2>
+    <p class="lead">As ASEAN neighbours, we believe great education should be for everyone.</p>
+    <ul class="b">
+      <li><b>Tuition:</b> a flat 90,000 THB per semester, for all four years</li>
+      <li><b>Living costs:</b> about 222,000–390,000 THB a year</li>
+      <li><b>Summer classes:</b> 25,000 THB, only if needed</li>
+      <li><b>Application fee:</b> 600 THB, non-refundable</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>Estimated total for four years</h3>
+    <div class="row" title="720,000 THB tuition + 888,000 THB living costs"><div class="lab"><span>Lower living costs</span><b>1.61 million THB</b></div><div class="bar"><span class="t" style="width:31.6%"></span><span class="l" style="width:38.9%"></span></div></div>
+    <div class="row" title="720,000 THB tuition + 1,560,000 THB living costs"><div class="lab"><span>Higher living costs</span><b>2.28 million THB</b></div><div class="bar"><span class="t" style="width:31.6%"></span><span class="l" style="width:68.2%"></span></div></div>
+    <div class="legend"><span><i style="background:var(--tuition)"></i>Tuition: 720,000 THB</span><span><i style="background:var(--living)"></i>Living costs: estimate</span></div>
+    <p class="small">Living costs depend on your lifestyle and come from the Faculty’s 2024 fact sheet, so please confirm them when you apply.</p>
+  </div>
+</div></section>
+
+<section class="req" id="requirements"><div class="wrap">
+  <h2>Check these four entry rules</h2>
+  <p class="lead">These are the main rules for 2027. Test scores must be from the two years before you apply.</p>
+  <ul class="checks">
+    <li><h3>School</h3><p>Grade 12 (US curriculum), Cambridge AS/A-Level, the IB or GED, finished or in progress</p></li>
+    <li><h3>Grades</h3><p>High school CGPA of at least 2.50, or the equivalent</p></li>
+    <li><h3>English</h3><p>One test, such as IELTS 5.0, Duolingo 80 or TOEFL iBT 60</p></li>
+    <li><h3>Maths</h3><p>One test, such as SAT Math 600, ACT Math 25 or IGCSE Extended grade B</p></li>
+  </ul>
+  <p class="heads"><b>Taking the Myanmar school exam?</b> It is not on the published list, so please <a href="mailto:ictadmission@mahidol.ac.th?subject=Myanmar%20school%20exam%20and%20entry%20requirements">ask Admissions</a> which scores you need before you apply.</p>
+</div></section>
+
+<section id="round2"><div class="wrap">
+  <h2>Apply from home in four steps</h2>
+  <p class="lead">Round 2 closes on 31 December 2026, and it gives you the most time of any remaining round to arrange your passport and visa.</p>
+  <ol class="path">
+    <li><p class="when">Today</p><h3>Read and check</h3><p>Read through our fact sheet in Burmese and check the entry rules.</p></li>
+    <li><p class="when">By 31 December 2026</p><h3>Apply online</h3><p>Upload your documents. No travel until you are accepted.</p></li>
+    <li><p class="when">February 2027</p><h3>Online interview</h3><p>Do your interview and get your result. Admissions confirms the interview format.</p></li>
+    <li><p class="when">June–August 2027</p><h3>Begin</h3><p>Join the Preparatory Program, then start your first semester in August.</p></li>
+  </ol>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Start today and give yourself the most time to prepare</h2>
+  <p>Check the requirements on the Faculty’s admissions page, then apply online before Round 2 closes on 31 December 2026.</p>
+  <a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today</a>
+  <a class="second" href="mailto:ictadmission@mahidol.ac.th?subject=Information%20about%20the%20B.Sc.%20in%20ICT">Request information</a>
+  <p class="contact">ictadmission@mahidol.ac.th | +66 2 441 0909 | LINE @ictmahidol</p>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>Sources:</b> Faculty of ICT Information Pack;
+    <a href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">ICT International Direct Admissions 2027</a>;
+    <a href="https://www.ict.mahidol.ac.th/en/programs/bachelor-of-science-in-ict-revised-program/">B.Sc. in ICT programme page</a>;
+    <a href="https://ict.mahidol.ac.th/en/wp-content/uploads/2024/09/INFO_Fact-Sheet-EN.pdf">Faculty fact sheet, 2024</a>;
+    <a href="https://www.ict.mahidol.ac.th/en/student/student-affairs/">Student Affairs</a>;
+    <a href="https://news.ict.mahidol.ac.th/?p=24270">AUN-QA news, 2024</a>;
+    <a href="https://news.ict.mahidol.ac.th/?p=100582">Internship Abroad news, 2026</a>;
+    <a href="https://www.irrawaddy.com/?p=153181">The Irrawaddy, 2026</a>;
+    <a href="https://osos.boi.go.th/EN/news/2430/Thailand-Secures-43-6bn-1H-2026-Investment-Surge-as-Big-Tec/">Thailand Board of Investment, 2026</a>;
+    <a href="https://www.flightsfrom.com/RGN-BKK">FlightsFrom</a>.</p>
+  <p>Photo: Faculty of ICT, Mahidol University.</p>
+  <p>Student campaign prototype for ITLG311 Business Communication. Please confirm all details on the Faculty’s website.</p>
+</div></footer>
+
+<div class="sticky"><a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today</a></div>
+
+</body>
+</html>
