@@ -6,34 +6,47 @@
 <title>Study ICT at Mahidol University: a page for students from Myanmar</title>
 <meta name="description" content="Student coursework prototype: an English-taught B.Sc. in ICT at Mahidol University, Thailand. World-ranked, one flat fee, close to home.">
 <meta name="robots" content="noindex">
-<script>document.documentElement.className = "js";</script>
+<meta name="theme-color" content="#0F3D38">
+<script>
+(function () {
+  var root = document.documentElement;
+  root.className = "js";
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if ("IntersectionObserver" in window && !reduced) {
+    root.classList.add("anim");
+    /* Show everything if the page script never starts */
+    window.__animGuard = setTimeout(function () { root.classList.remove("anim"); }, 4000);
+  }
+})();
+</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
 <style>
-:root{--dark:#0F3D38;--dark2:#164C46;--green:#0F6B5E;--tint:#E8F2EF;--line:#D3E2DD;--gold:#E8AE2C;--gold2:#F2BE48;--ink:#14302C;--soft:#3F524E;--mute:#566965;--on:#E3EFEB;--tuition:#007F4F;--living:#C47F00;--serif:'Source Serif 4',Georgia,serif;--sans:'Public Sans',Arial,sans-serif}
+:root{--dark:#0F3D38;--dark2:#164C46;--green:#0F6B5E;--tint:#EEF5F3;--tint2:#DCEBE6;--line:#D3E2DD;--gold:#E8AE2C;--gold2:#F2BE48;--ink:#14302C;--soft:#3F524E;--mute:#566965;--on:#E3EFEB;--tuition:#007F4F;--living:#C47F00;--serif:'Source Serif 4',Georgia,serif;--sans:'Public Sans',Arial,sans-serif;--ease:cubic-bezier(.22,.7,.25,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:#fff;color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.55}
 a{color:var(--green)}
-a:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-section{padding:64px 0}
-h1,h2{font-family:var(--serif);font-weight:700;line-height:1.1;color:var(--dark);text-wrap:balance}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:88px 0;scroll-margin-top:30px}
+h1,h2{font-family:var(--serif);font-weight:700;line-height:1.12;color:var(--dark);text-wrap:balance}
 h2{font-size:clamp(30px,4vw,42px);margin-bottom:12px}
 h3{font-size:21px;line-height:1.25;font-weight:700;color:var(--dark)}
-.lead{font-size:clamp(18px,2vw,20px);color:var(--soft);max-width:720px}
-.btn{display:inline-block;font-weight:700;font-size:18px;text-decoration:none;padding:15px 26px;border-radius:10px;transition:background .15s,transform .15s}
-.btn:hover{transform:translateY(-1px)}
+.lead{font-size:clamp(18px,2vw,20px);color:var(--soft);max-width:640px}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:18px;text-decoration:none;padding:15px 26px;border-radius:10px;transition:background .18s,transform .18s var(--ease),box-shadow .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,61,56,.22)}
+.btn .arr{transition:transform .18s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
 .primary{background:var(--gold);color:var(--ink)}
 .primary:hover{background:var(--gold2)}
-.ghost{background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.75);padding:13px 22px}
-.ghost:hover{background:rgba(255,255,255,.22)}
+.textlink{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:#fff;text-decoration:underline;text-underline-offset:4px}
+.textlink .arr{transition:transform .18s var(--ease)}
+.textlink:hover .arr{transform:translateX(4px)}
 
+/* notice and nav */
 .notice{background:#14302C;color:var(--on);font-size:14px;text-align:center;padding:6px 16px}
-.hero{position:relative;color:#fff;background:var(--dark);overflow:hidden;padding:0}
-.hero img{position:absolute;top:0;right:0;width:50%;height:100%;object-fit:cover;object-position:50% 80%}
-.hero::after{content:"";position:absolute;top:0;bottom:0;right:0;width:50%;background:linear-gradient(90deg,#0F3D38 0%,rgba(15,61,56,0) 20%)}
-.hero .wrap{position:relative;z-index:1;padding-top:44px;padding-bottom:88px}
-.nav{position:sticky;top:0;z-index:10;background:var(--dark);box-shadow:0 2px 14px rgba(0,0,0,.25)}
+.nav{position:sticky;top:0;z-index:10;background:var(--dark);box-shadow:0 2px 14px rgba(0,0,0,.2)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px}
 .logo{font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.15;color:#fff;text-decoration:none;white-space:nowrap}
 .logo small{display:block;font-family:var(--sans);font-weight:400;font-size:13px;color:var(--on)}
@@ -44,86 +57,128 @@ h3{font-size:21px;line-height:1.25;font-weight:700;color:var(--dark)}
 .nav .btn{font-size:16px;padding:10px 18px;margin-left:8px;white-space:nowrap}
 .menu{display:none;align-items:center;gap:9px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.65);border-radius:8px;padding:7px 12px;font:600 15px var(--sans);cursor:pointer}
 .menu i{display:block;width:18px;height:2px;background:#fff;box-shadow:0 -6px 0 #fff,0 6px 0 #fff}
-.menu:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-section[id]{scroll-margin-top:60px}
-.copy{max-width:510px}
-.deadline{display:inline-block;background:var(--gold);color:var(--ink);border-radius:20px;font-size:15px;font-weight:700;padding:5px 14px;margin-bottom:18px}
-.hero h1{color:#fff;font-size:clamp(34px,4.2vw,50px);line-height:1.06;letter-spacing:-.4px}
-.usp{font-size:clamp(18px,2vw,20px);color:var(--on);margin:18px 0 8px}
-.who{font-size:17px;color:var(--on);margin-bottom:24px}
-.actions{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:center}
+.progress{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;pointer-events:none}
 
-.proof{padding:0;margin-top:-44px;position:relative;z-index:2}
-.proof ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 26px rgba(15,61,56,.12)}
-.proof li{padding:20px 22px;border-left:1px solid var(--line)}
+/* hero */
+.hero{position:relative;color:#fff;background:var(--dark);overflow:hidden}
+.hero img{position:absolute;top:0;right:0;width:50%;height:100%;object-fit:cover;object-position:50% 80%}
+.hero::after{content:"";position:absolute;top:0;bottom:0;right:0;width:50%;background:linear-gradient(90deg,#0F3D38 0%,rgba(15,61,56,0) 20%)}
+.hero .wrap{position:relative;z-index:1;padding-top:64px;padding-bottom:112px}
+.copy{max-width:490px}
+.deadline{display:inline-block;background:var(--gold);color:var(--ink);border-radius:20px;font-size:15px;font-weight:700;padding:5px 14px;margin-bottom:20px}
+.hero h1{color:#fff;font-size:clamp(34px,4.2vw,50px);line-height:1.08;letter-spacing:-.4px}
+.usp{font-size:clamp(18px,2vw,19px);color:var(--on);margin:20px 0 8px}
+.who{font-size:16px;color:var(--on);margin-bottom:28px}
+.actions{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+
+/* proof strip */
+.proof{margin-top:-52px;position:relative;z-index:2}
+.proof ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:16px;box-shadow:0 14px 34px rgba(15,61,56,.14)}
+.proof li{padding:24px 26px;border-left:1px solid var(--line)}
 .proof li:first-child{border-left:0}
-.proof b{display:block;font-family:var(--serif);font-size:clamp(30px,3.4vw,38px);line-height:1.1;color:var(--green)}
-.proof span{display:block;font-size:15.5px;line-height:1.35;color:var(--soft);margin-top:4px}
+.proof b{display:block;font-family:var(--serif);font-size:clamp(30px,3.4vw,40px);line-height:1.1;color:var(--green);font-variant-numeric:tabular-nums}
+.proof span{display:block;font-size:15.5px;line-height:1.35;color:var(--soft);margin-top:5px}
 
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-.ben{background:var(--tint);border-radius:14px;padding:24px}
-.ben svg{width:38px;height:38px;stroke:var(--green);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;margin-bottom:10px}
-.ben ul{margin-top:9px}
-ul.b{list-style:none;display:flex;flex-direction:column;gap:6px}
-ul.b li{font-size:16.5px;line-height:1.35;color:var(--soft);padding-left:17px;position:relative}
-ul.b li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--green)}
-.wide{margin-top:16px;background:var(--dark);color:#fff;border-radius:14px;padding:26px 28px;display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+/* benefits */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin:40px -22px 0}
+.ben{display:flex;gap:18px;padding:22px;border-radius:16px;transition:background .2s,transform .2s var(--ease)}
+.ben:hover{background:var(--tint);transform:translateY(-3px)}
+.ico{flex:none;width:54px;height:54px;border-radius:50%;background:var(--tint2);display:grid;place-items:center}
+.ico svg{width:28px;height:28px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ben p{color:var(--soft);font-size:17px;margin-top:5px}
+.wide{margin-top:36px;background:var(--dark);color:#fff;border-radius:18px;padding:34px 36px;display:grid;grid-template-columns:auto 1fr 1fr;gap:30px;align-items:center}
+.wide .num{font-family:var(--serif);font-size:76px;font-weight:700;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
 .wide h3{color:#fff;font-size:25px;font-family:var(--serif)}
-.wide p{color:var(--on);margin-top:8px;font-size:18px}
+.wide p{color:var(--on);margin-top:7px;font-size:17px}
 .wide strong{color:var(--gold)}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
 .chips span{font-size:15px;font-weight:600;color:var(--dark);background:#fff;border-radius:16px;padding:4px 12px}
-.wide .fine{font-size:15px;color:var(--on);margin-top:11px}
+.wide .fine{font-size:14.5px;margin-top:12px}
 
+/* community */
 .home{background:var(--tint)}
-.home .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
-.big{font-family:var(--serif);font-weight:700;font-size:clamp(58px,8vw,88px);line-height:1;color:var(--green);margin-bottom:8px}
-.facts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.facts li{background:#fff;border-radius:12px;padding:15px 18px;font-size:16.5px;line-height:1.4;color:var(--soft)}
+.home .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.big{font-family:var(--serif);font-weight:700;font-size:clamp(60px,8vw,92px);line-height:1;color:var(--green);margin-bottom:10px;font-variant-numeric:tabular-nums}
+.facts{list-style:none;display:flex;flex-direction:column;gap:20px}
+.facts li{display:flex;gap:16px;align-items:flex-start;font-size:16.5px;line-height:1.4;color:var(--soft)}
+.facts .ico{width:46px;height:46px;background:#fff}
+.facts .ico svg{width:23px;height:23px}
 .facts b{display:block;color:var(--dark);font-size:18px}
 
-.cost .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
-.cost ul.b{margin-top:16px}
-.panel{background:var(--tint);border-radius:14px;padding:26px}
-.panel h3{margin-bottom:16px}
-.row{margin-bottom:15px}
-.lab{display:flex;justify-content:space-between;gap:12px;font-size:16px;color:var(--soft);margin-bottom:5px}
+/* cost */
+.cost .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+ul.plain{list-style:none;margin-top:20px;display:flex;flex-direction:column}
+ul.plain li{padding:11px 0;border-top:1px solid var(--line);font-size:16.5px;color:var(--soft);display:flex;justify-content:space-between;gap:18px}
+ul.plain b{color:var(--ink);font-weight:600;white-space:nowrap}
+ul.plain span{text-align:right}
+.panel{background:var(--tint);border-radius:18px;padding:30px}
+.panel h3{margin-bottom:18px}
+.row{margin-bottom:18px}
+.lab{display:flex;justify-content:space-between;gap:12px;font-size:16px;color:var(--soft);margin-bottom:6px}
 .lab b{color:var(--ink);white-space:nowrap}
-.bar{display:flex;gap:2px;height:30px}
-.bar span{display:block;height:100%}
+.bar{display:flex;gap:2px;height:32px}
+.bar span{display:block;height:100%;width:var(--w)}
 .t{background:var(--tuition);border-radius:4px 0 0 4px}
 .l{background:var(--living);border-radius:0 4px 4px 0}
 .legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:15.5px;color:var(--soft)}
 .legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:7px;vertical-align:-2px}
-.small{font-size:15.5px;color:var(--mute);margin-top:13px}
+.small{font-size:15px;color:var(--mute);margin-top:14px}
 
+/* entry rules */
 .req{background:var(--tint)}
-.checks{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
-.checks li{background:#fff;border-radius:12px;padding:18px}
-.checks p{font-size:16px;line-height:1.4;color:var(--soft);margin-top:4px}
-.heads{margin-top:14px;background:var(--dark);color:#fff;border-radius:12px;padding:15px 20px;font-size:17px}
+.checks{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.checks li{background:#fff;border-radius:14px;padding:22px;transition:transform .2s var(--ease),box-shadow .2s}
+.checks li:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(15,61,56,.1)}
+.tick{width:30px;height:30px;border-radius:50%;background:var(--green);display:grid;place-items:center;margin-bottom:12px}
+.tick svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.checks p{font-size:16px;line-height:1.42;color:var(--soft);margin-top:5px}
+.heads{margin-top:18px;background:var(--dark);color:#fff;border-radius:14px;padding:17px 22px;font-size:17px}
 .heads b{color:var(--gold)}
 .heads a{color:#fff;font-weight:600}
 
-.path{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px;counter-reset:s}
-.path li{background:var(--tint);border-radius:12px;padding:18px;counter-increment:s}
-.path li::before{content:counter(s);display:flex;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-bottom:9px}
+/* steps */
+.path{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:44px;position:relative;counter-reset:s}
+.path::before,.path::after{content:"";position:absolute;left:19px;right:calc(25% - 2px);top:18px;height:4px;border-radius:2px;background:var(--tint2)}
+.path::after{background:var(--green);transform-origin:left;transition:transform 1.5s var(--ease) .2s}
+.path li{position:relative;counter-increment:s}
+.path li::before{content:counter(s);position:relative;z-index:1;display:flex;width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 0 0 5px #fff;transition:transform .45s var(--ease),opacity .45s}
 .when{font-size:15px;font-weight:700;color:#7A5200}
-.path p:last-child{font-size:16px;line-height:1.4;color:var(--soft);margin-top:4px}
+.path p:last-child{font-size:16px;line-height:1.42;color:var(--soft);margin-top:4px}
 
+/* final call to action */
 .final{background:var(--gold);text-align:center}
 .final h2{color:var(--ink)}
-.final p{font-size:18px;max-width:640px;margin:0 auto 22px}
+.final .sub{font-size:18px;max-width:600px;margin:0 auto 26px}
 .final .primary{background:var(--dark);color:#fff}
 .final .primary:hover{background:var(--dark2)}
-.final .second{display:inline-block;margin-left:14px;font-weight:700;color:var(--ink)}
-.final .contact{font-size:16px;margin:18px auto 0;font-weight:500}
-.final .contact a{color:var(--ink);font-weight:600}
+.final .second{display:inline-block;margin-left:18px;font-weight:700;color:var(--ink)}
+.final .contact{font-size:16px;margin:20px auto 0;font-weight:500}
 
-footer{background:var(--dark);color:var(--on);font-size:14px;line-height:1.5;padding:28px 0 32px}
+footer{background:var(--dark);color:var(--on);font-size:14.5px;line-height:1.5;padding:30px 0 34px}
 footer a{color:var(--on)}
-footer p+p{margin-top:8px}
+.foot{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;flex-wrap:wrap}
+details{flex:1;min-width:260px}
+summary{cursor:pointer;font-weight:600;color:#fff}
+details p{margin-top:9px}
 .sticky{display:none}
+
+/* motion: only applied when the page script runs and reduced motion is off */
+.anim [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0ms)}
+.anim [data-reveal].in{opacity:1;transform:none}
+.anim .hero img{animation:settle 1.5s var(--ease) both;transform-origin:0 50%}
+.anim .copy>*{animation:rise .75s var(--ease) both;animation-delay:calc(var(--i,0)*95ms + 80ms)}
+.anim .chips span{transition:opacity .4s,transform .4s var(--ease)}
+.anim [data-reveal]:not(.in) .chips span{opacity:0;transform:scale(.85)}
+.anim .chips span:nth-child(2){transition-delay:60ms}.anim .chips span:nth-child(3){transition-delay:120ms}.anim .chips span:nth-child(4){transition-delay:180ms}.anim .chips span:nth-child(5){transition-delay:240ms}.anim .chips span:nth-child(6){transition-delay:300ms}.anim .chips span:nth-child(7){transition-delay:360ms}
+.anim .bar span{transition:width 1.2s var(--ease) .25s}
+.anim [data-reveal]:not(.in) .bar span{width:0}
+.anim .path:not(.in)::after{transform:scaleX(0)}
+.anim .path:not(.in) li::before{transform:scale(.4);opacity:0}
+.anim .path li:nth-child(2)::before{transition-delay:.4s}.anim .path li:nth-child(3)::before{transition-delay:.8s}.anim .path li:nth-child(4)::before{transition-delay:1.2s}
+.anim .links.open{animation:drop .22s var(--ease)}
+@keyframes settle{from{transform:scale(1.06)}to{transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 
 @media (max-width:1000px){
   .nav-in{flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
@@ -133,25 +188,54 @@ footer p+p{margin-top:8px}
   .js .links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--dark);padding:6px 24px 18px;box-shadow:0 12px 22px rgba(0,0,0,.28)}
   .js .links.open{display:flex}
   .js .links a:not(.btn){padding:12px 8px;font-size:17px;border-bottom:1px solid #2B5F58;border-radius:0}
-  .js .nav .btn{display:block;text-align:center;margin:14px 0 0}
+  .js .nav .btn{display:flex;justify-content:center;margin:14px 0 0}
+  .wide{grid-template-columns:auto 1fr}
+  .wide>div:last-child{grid-column:1/-1}
+  .checks{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
-  section{padding:48px 0}
+  section{padding:60px 0}
   .hero img{position:static;display:block;width:100%;height:250px;object-position:50% 74%}
   .hero::after{display:none}
-  .hero .wrap{padding-top:24px}
+  .hero .wrap{padding-top:28px;padding-bottom:88px}
   .copy{max-width:none}
   .proof ul{grid-template-columns:1fr 1fr}
   .proof li:nth-child(3){border-left:0}
   .proof li:nth-child(n+3){border-top:1px solid var(--line)}
-  .grid,.checks,.path{grid-template-columns:1fr 1fr}
-  .wide,.home .wrap,.cost .wrap{grid-template-columns:1fr;gap:24px}
+  .grid,.home .wrap,.cost .wrap{grid-template-columns:1fr;gap:28px}
+  .grid{gap:6px;margin:26px 0 0}
+  .ben{padding:16px 0}
+  .ben .ico{width:46px;height:46px}
+  .ben .ico svg{width:24px;height:24px}
+  .path{grid-template-columns:1fr;gap:26px}
+  .path::before,.path::after{display:none}
+  .path li{padding-left:58px}
+  .path li::before{position:absolute;left:0;top:0;margin:0}
+  .path li:not(:last-child)::after{content:"";position:absolute;left:18px;top:40px;bottom:-26px;width:4px;background:var(--green);transform-origin:top;transition:transform .5s var(--ease)}
+  .anim .path:not(.in) li::after{transform:scaleY(0)}
+  .anim .path li:nth-child(2)::after{transition-delay:.4s}
+  .anim .path li:nth-child(3)::after{transition-delay:.8s}
   body{padding-bottom:74px}
-  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--dark);padding:10px 16px;z-index:5;box-shadow:0 -4px 16px rgba(0,0,0,.2)}
-  .sticky .btn{display:block;text-align:center;padding:13px}
+  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--dark);padding:10px 16px;z-index:5;box-shadow:0 -4px 16px rgba(0,0,0,.2);transition:transform .28s var(--ease)}
+  .js .sticky{transform:translateY(110%)}
+  .js .sticky.show{transform:none}
+  .sticky .btn{display:flex;justify-content:center;padding:13px}
 }
-@media (max-width:560px){.grid,.checks,.path,.facts{grid-template-columns:1fr}.final .second{display:block;margin:12px 0 0}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media (max-width:560px){
+  .checks{grid-template-columns:1fr}
+  .wide{padding:26px 24px;gap:18px}
+  .wide .num{font-size:60px}
+  .btn{font-size:17px;padding:14px 20px}
+  .final .second{display:block;margin:14px 0 0}
+  ul.plain li{flex-direction:column;gap:2px}
+  ul.plain span{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn,.btn .arr,.textlink .arr,.ben,.checks li,.sticky,.links a,.path::after,.path li::before,.path li::after{transition:none}
+  .btn:hover,.ben:hover,.checks li:hover{transform:none}
+}
+@media print{.anim [data-reveal]{opacity:1!important;transform:none!important}.nav,.sticky{position:static}}
 </style>
 </head>
 <body id="top">
@@ -169,72 +253,58 @@ footer p+p{margin-top:8px}
     <li><a href="#round2">How to apply</a></li>
     <li><a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Apply now</a></li>
   </ul>
-</div></nav>
+</div><span class="progress" aria-hidden="true"></span></nav>
 
 <header class="hero">
-  <img src="https://www.ict.mahidol.ac.th/admissions/wp-content/uploads/2024/09/life-4-scaled-1.jpg" alt="Two students studying together at an outdoor table on the green Mahidol University campus">
+  <img src="https://www.ict.mahidol.ac.th/admissions/wp-content/uploads/2024/09/life-4-scaled-1.jpg" alt="Two students studying together at an outdoor table on the green Mahidol University campus" fetchpriority="high">
   <div class="wrap">
     <div class="copy">
-      <p class="deadline">Round 2 closes on 31 December 2026</p>
-      <h1>Want a world-ranked ICT degree without going far from home?</h1>
-      <p class="usp">A world-recognised, English-taught ICT degree from one of Thailand’s top two universities, one flat fee, close to home, and a launchpad to funded internships abroad.</p>
-      <p class="who">For students in Myanmar, whether you are finishing school or starting again.</p>
-      <div class="actions">
-        <a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today</a>
-        <a class="btn ghost" href="https://www.ict.mahidol.ac.th/en/wp-content/uploads/2024/09/INFO_Fact-Sheet-MY.pdf">Read our fact sheet in Burmese</a>
+      <p class="deadline" style="--i:0">Round 2 closes on 31 December 2026</p>
+      <h1 style="--i:1">Want a world-ranked ICT degree without going far from home?</h1>
+      <p class="usp" style="--i:2">A world-recognised, English-taught ICT degree from one of Thailand’s top two universities, one flat fee, close to home, and a launchpad to funded internships abroad.</p>
+      <p class="who" style="--i:3">For students in Myanmar, whether you are finishing school or starting again.</p>
+      <div class="actions" style="--i:4">
+        <a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today <span class="arr" aria-hidden="true">→</span></a>
+        <a class="textlink" href="https://www.ict.mahidol.ac.th/en/wp-content/uploads/2024/09/INFO_Fact-Sheet-MY.pdf">Read our fact sheet in Burmese <span class="arr" aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
 </header>
 
-<div class="proof"><div class="wrap">
+<div class="proof" data-reveal><div class="wrap">
   <ul>
     <li><b>#345</b><span>in the world, QS World University Rankings 2027</span></li>
-    <li><b>8</b><span>specialisation tracks, all taught in English</span></li>
-    <li><b>90,000</b><span>THB flat tuition fee per semester</span></li>
-    <li><b>75</b><span>ICT Mahidol students got internships abroad last year</span></li>
+    <li><b data-count="8">8</b><span>specialisation tracks, all taught in English</span></li>
+    <li><b data-count="90000">90,000</b><span>THB flat tuition fee per semester</span></li>
+    <li><b data-count="75">75</b><span>ICT Mahidol students got internships abroad last year</span></li>
   </ul>
 </div></div>
 
 <section id="benefits"><div class="wrap">
-  <h2>Gain a degree, skills and experience that travel with you</h2>
-  <p class="lead">Here is what you could take from four years at ICT Mahidol.</p>
+  <div data-reveal>
+    <h2>Gain a degree, skills and experience that travel with you</h2>
+    <p class="lead">Here is what you could take from four years at ICT Mahidol.</p>
+  </div>
   <div class="grid">
-    <article class="ben">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-4.600 11.500-11 14C9.600 26.500 5 22 5 15V7z"/><path d="M11 16l3.500 3.500L21 13"/></svg>
-      <h3>A degree that counts</h3>
-      <ul class="b">
-        <li>345th in the world (QS 2027)</li>
-        <li>Joint 55th in Asia (QS Asia 2026)</li>
-        <li>AUN-QA Level 6 of 7, for ASEAN standards</li>
-      </ul>
+    <article class="ben" data-reveal>
+      <div class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-4.600 11.500-11 14C9.600 26.500 5 22 5 15V7z"/><path d="M11 16l3.500 3.500L21 13"/></svg></div>
+      <div><h3>A degree that counts</h3><p>345th in the world (QS 2027) and joint 55th in Asia (QS Asia 2026), with an AUN-QA rating of Level 6 of 7.</p></div>
     </article>
-    <article class="ben">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="16" rx="2.500"/><path d="M11 27h10M16 22v5"/><path d="M12 12l-3 2.500 3 2.500M20 12l3 2.500-3 2.500"/></svg>
-      <h3>Learn by building</h3>
-      <ul class="b">
-        <li>Project-based learning, with theory you put into practice</li>
-        <li>Tracks include AI, Network and Security, and Software Engineering</li>
-      </ul>
+    <article class="ben" data-reveal style="--d:90ms">
+      <div class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="16" rx="2.500"/><path d="M11 27h10M16 22v5"/><path d="M12 12l-3 2.500 3 2.500M20 12l3 2.500-3 2.500"/></svg></div>
+      <div><h3>Learn by building</h3><p>Project-based learning across eight tracks, including AI, Network and Security, and Software Engineering.</p></div>
     </article>
-    <article class="ben">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 7h15a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-8l-5 5v-5H5z"/><path d="M27 12v8a3 3 0 0 1-2 2.800V26l-3-3"/></svg>
-      <h3>English for a global career</h3>
-      <ul class="b">
-        <li>Every course taught in English</li>
-        <li>12 credits of language study, including Public Speaking and Academic Writing</li>
-      </ul>
+    <article class="ben" data-reveal>
+      <div class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 7h15a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-8l-5 5v-5H5z"/><path d="M27 12v8a3 3 0 0 1-2 2.800V26l-3-3"/></svg></div>
+      <div><h3>English for a global career</h3><p>Every course is taught in English, plus 12 credits of language study such as Public Speaking and Academic Writing.</p></div>
     </article>
-    <article class="ben">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="11" width="24" height="16" rx="2.500"/><path d="M12 11V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><path d="M4 18h24"/></svg>
-      <h3>A growing digital field</h3>
-      <ul class="b">
-        <li>Thailand is investing in cloud services, data centres, AI and cybersecurity</li>
-        <li>International graduates have reportedly worked at Agoda, IBM, KPMG and LINE</li>
-      </ul>
+    <article class="ben" data-reveal style="--d:90ms">
+      <div class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="11" width="24" height="16" rx="2.500"/><path d="M12 11V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><path d="M4 18h24"/></svg></div>
+      <div><h3>A growing digital field</h3><p>Thailand is investing in cloud services, data centres, AI and cybersecurity. International graduates have reportedly worked at Agoda, IBM, KPMG and LINE.</p></div>
     </article>
   </div>
-  <article class="wide">
+  <article class="wide" data-reveal>
+    <span class="num" data-count="75">75</span>
     <div>
       <h3>A launchpad to the world</h3>
       <p>Last year, 75 ICT Mahidol students got internships at 17 partner universities and institutions in 7 countries, with 5.66 million THB in financial support. <strong>You could be next.</strong></p>
@@ -247,56 +317,60 @@ footer p+p{margin-top:8px}
 </div></section>
 
 <section class="home" id="community"><div class="wrap">
-  <div>
-    <p class="big">17,561</p>
+  <div data-reveal>
+    <p class="big" data-count="17561">17,561</p>
     <h2>You will not start alone</h2>
     <p class="lead">Ministry of Higher Education data shows 17,561 Myanmar students in Thailand in the first semester of 2025. Join the community who already call Thailand their second home!</p>
   </div>
   <!-- TESTIMONIAL SLOT: add a real, approved quote from a Myanmar MUICT student here (Phupa's action item). Do not publish an invented quote. -->
   <ul class="facts">
-    <li><b>Close to family</b>About 1.5 hours by direct flight from Yangon to Bangkok</li>
-    <li><b>Ready before day one</b>The ICT Preparatory Program runs in June and July</li>
-    <li><b>Support on campus</b>Advisers, academic counselling and a campus nurse</li>
-    <li><b>Life beyond class</b>Clubs for basketball, public speaking, art and makers, plus Mahidol University dormitories</li>
+    <li data-reveal><span class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M28 4L14 18"/><path d="M28 4l-9 24-5-10-10-5z"/></svg></span><span><b>Close to family</b>About 1.5 hours by direct flight from Yangon to Bangkok</span></li>
+    <li data-reveal style="--d:80ms"><span class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="20" rx="3"/><path d="M5 13h22M11 4v6M21 4v6"/></svg></span><span><b>Ready before day one</b>The ICT Preparatory Program runs in June and July</span></li>
+    <li data-reveal style="--d:160ms"><span class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28S4 21 4 12a6.500 6.500 0 0 1 12-3.500A6.500 6.500 0 0 1 28 12c0 9-12 16-12 16z"/></svg></span><span><b>Support on campus</b>Advisers, academic counselling and a campus nurse</span></li>
+    <li data-reveal style="--d:240ms"><span class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15L16 5l12 10"/><path d="M8 13v14h16V13"/><path d="M13 27v-8h6v8"/></svg></span><span><b>Life beyond class</b>Clubs for basketball, public speaking, art and makers, plus Mahidol University dormitories</span></li>
   </ul>
 </div></section>
 
 <section class="cost" id="cost"><div class="wrap">
-  <div>
+  <div data-reveal>
     <h2>See the full cost before you decide</h2>
     <p class="lead">As ASEAN neighbours, we believe great education should be for everyone.</p>
-    <ul class="b">
-      <li><b>Tuition:</b> a flat 90,000 THB per semester, for all four years</li>
-      <li><b>Living costs:</b> about 222,000–390,000 THB a year</li>
-      <li><b>Summer classes:</b> 25,000 THB, only if needed</li>
-      <li><b>Application fee:</b> 600 THB, non-refundable</li>
+    <ul class="plain">
+      <li><b>Tuition</b><span>A flat 90,000 THB per semester, for all four years</span></li>
+      <li><b>Living costs</b><span>About 222,000–390,000 THB a year</span></li>
+      <li><b>Summer classes</b><span>25,000 THB, only if needed</span></li>
+      <li><b>Application fee</b><span>600 THB, non-refundable</span></li>
     </ul>
   </div>
-  <div class="panel">
+  <div class="panel" data-reveal style="--d:120ms">
     <h3>Estimated total for four years</h3>
-    <div class="row" title="720,000 THB tuition + 888,000 THB living costs"><div class="lab"><span>Lower living costs</span><b>1.61 million THB</b></div><div class="bar"><span class="t" style="width:31.6%"></span><span class="l" style="width:38.9%"></span></div></div>
-    <div class="row" title="720,000 THB tuition + 1,560,000 THB living costs"><div class="lab"><span>Higher living costs</span><b>2.28 million THB</b></div><div class="bar"><span class="t" style="width:31.6%"></span><span class="l" style="width:68.2%"></span></div></div>
+    <div class="row" title="720,000 THB tuition + 888,000 THB living costs"><div class="lab"><span>Lower living costs</span><b>1.61 million THB</b></div><div class="bar"><span class="t" style="--w:31.6%"></span><span class="l" style="--w:38.9%"></span></div></div>
+    <div class="row" title="720,000 THB tuition + 1,560,000 THB living costs"><div class="lab"><span>Higher living costs</span><b>2.28 million THB</b></div><div class="bar"><span class="t" style="--w:31.6%"></span><span class="l" style="--w:68.2%"></span></div></div>
     <div class="legend"><span><i style="background:var(--tuition)"></i>Tuition: 720,000 THB</span><span><i style="background:var(--living)"></i>Living costs: estimate</span></div>
     <p class="small">Living costs depend on your lifestyle and come from the Faculty’s 2024 fact sheet, so please confirm them when you apply.</p>
   </div>
 </div></section>
 
 <section class="req" id="requirements"><div class="wrap">
-  <h2>Check these four entry rules</h2>
-  <p class="lead">These are the main rules for 2027. Test scores must be from the two years before you apply.</p>
+  <div data-reveal>
+    <h2>Check these four entry rules</h2>
+    <p class="lead">These are the main rules for 2027. Test scores must be from the two years before you apply.</p>
+  </div>
   <ul class="checks">
-    <li><h3>School</h3><p>Grade 12 (US curriculum), Cambridge AS/A-Level, the IB or GED, finished or in progress</p></li>
-    <li><h3>Grades</h3><p>High school CGPA of at least 2.50, or the equivalent</p></li>
-    <li><h3>English</h3><p>One test, such as IELTS 5.0, Duolingo 80 or TOEFL iBT 60</p></li>
-    <li><h3>Maths</h3><p>One test, such as SAT Math 600, ACT Math 25 or IGCSE Extended grade B</p></li>
+    <li data-reveal><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4.500 4.500L19 7"/></svg></span><h3>School</h3><p>Grade 12 (US curriculum), Cambridge AS/A-Level, the IB or GED, finished or in progress</p></li>
+    <li data-reveal style="--d:80ms"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4.500 4.500L19 7"/></svg></span><h3>Grades</h3><p>High school CGPA of at least 2.50, or the equivalent</p></li>
+    <li data-reveal style="--d:160ms"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4.500 4.500L19 7"/></svg></span><h3>English</h3><p>One test, such as IELTS 5.0, Duolingo 80 or TOEFL iBT 60</p></li>
+    <li data-reveal style="--d:240ms"><span class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4.500 4.500L19 7"/></svg></span><h3>Maths</h3><p>One test, such as SAT Math 600, ACT Math 25 or IGCSE Extended grade B</p></li>
   </ul>
-  <p class="heads"><b>Taking the Myanmar school exam?</b> It is not on the published list, so please <a href="mailto:ictadmission@mahidol.ac.th?subject=Myanmar%20school%20exam%20and%20entry%20requirements">ask Admissions</a> which scores you need before you apply.</p>
+  <p class="heads" data-reveal><b>Taking the Myanmar school exam?</b> It is not on the published list, so please <a href="mailto:ictadmission@mahidol.ac.th?subject=Myanmar%20school%20exam%20and%20entry%20requirements">ask Admissions</a> which scores you need before you apply.</p>
 </div></section>
 
 <section id="round2"><div class="wrap">
-  <h2>Apply from home in four steps</h2>
-  <p class="lead">Round 2 closes on 31 December 2026, and it gives you the most time of any remaining round to arrange your passport and visa.</p>
-  <ol class="path">
+  <div data-reveal>
+    <h2>Apply from home in four steps</h2>
+    <p class="lead">Round 2 closes on 31 December 2026, and it gives you the most time of any remaining round to arrange your passport and visa.</p>
+  </div>
+  <ol class="path" data-reveal>
     <li><p class="when">Today</p><h3>Read and check</h3><p>Read through our fact sheet in Burmese and check the entry rules.</p></li>
     <li><p class="when">By 31 December 2026</p><h3>Apply online</h3><p>Upload your documents online. You don’t need to travel to apply.</p></li>
     <li><p class="when">February 2027</p><h3>Interview and result</h3><p>Round 1 interviews for 2026 were online. Admissions confirms each year’s format.</p></li>
@@ -304,49 +378,56 @@ footer p+p{margin-top:8px}
   </ol>
 </div></section>
 
-<section class="final"><div class="wrap">
+<section class="final" id="apply"><div class="wrap" data-reveal>
   <h2>Start today and give yourself the most time to prepare</h2>
-  <p>Check the requirements on the Faculty’s admissions page, then apply online before Round 2 closes on 31 December 2026.</p>
-  <a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today</a>
+  <p class="sub">Check the requirements on the Faculty’s admissions page, then apply online before Round 2 closes on 31 December 2026.</p>
+  <a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today <span class="arr" aria-hidden="true">→</span></a>
   <a class="second" href="mailto:ictadmission@mahidol.ac.th?subject=Information%20about%20the%20B.Sc.%20in%20ICT">Request information</a>
   <p class="contact">ictadmission@mahidol.ac.th | +66 2 441 0909 | LINE @ictmahidol</p>
 </div></section>
 
-<footer><div class="wrap">
-  <p><b>Sources:</b> Faculty of ICT Information Pack;
-    <a href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">ICT International Direct Admissions 2027</a>;
-    <a href="https://www.ict.mahidol.ac.th/en/programs/bachelor-of-science-in-ict-revised-program/">B.Sc. in ICT programme page</a>;
-    <a href="https://ict.mahidol.ac.th/en/wp-content/uploads/2024/09/INFO_Fact-Sheet-EN.pdf">Faculty fact sheet, 2024</a>;
-    <a href="https://www.ict.mahidol.ac.th/en/student/student-affairs/">Student Affairs</a>;
-    <a href="https://news.ict.mahidol.ac.th/?p=24270">AUN-QA news, 2024</a>;
-    <a href="https://news.ict.mahidol.ac.th/?p=100582">Internship Abroad news, 2026</a>;
-    <a href="https://mahidol.ac.th/2026/mahidol-qsworld-2027/">Mahidol University (QS 2027)</a>;
-    <a href="https://news.ict.mahidol.ac.th/?p=59693">online interview news, 2025</a>;
-    <a href="https://data.mhesi.go.th/th/dataset/univ_std_11_03">Ministry of Higher Education open data</a>;
-    <a href="https://www.flightsfrom.com/RGN-BKK">FlightsFrom</a>.</p>
-  <p><b>Official pages:</b>
-    <a href="https://www.ict.mahidol.ac.th/en/programs/ict/">Programme and admissions</a>;
-    <a href="https://www.ict.mahidol.ac.th/en/student/information-for-international-students/">Information for international students</a>;
-    <a href="https://www.ict.mahidol.ac.th/en/frequently-asked-questions/">Frequently asked questions</a>;
-    <a href="https://www.ict.mahidol.ac.th/en/student/ict-mahidol-student-handbook/">Student handbook</a>.</p>
-  <p>Photo: Faculty of ICT, Mahidol University.</p>
-  <p>Student campaign prototype for ITLG311 Business Communication. Please confirm all details on the Faculty’s website.</p>
-  <p><a href="#top">Back to top</a></p>
-</div></footer>
+<footer><div class="wrap foot">
+  <details>
+    <summary>Sources and official pages</summary>
+    <p><b>Sources:</b> Faculty of ICT Information Pack;
+      <a href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">ICT International Direct Admissions 2027</a>;
+      <a href="https://www.ict.mahidol.ac.th/en/programs/bachelor-of-science-in-ict-revised-program/">B.Sc. in ICT programme page</a>;
+      <a href="https://ict.mahidol.ac.th/en/wp-content/uploads/2024/09/INFO_Fact-Sheet-EN.pdf">Faculty fact sheet, 2024</a>;
+      <a href="https://www.ict.mahidol.ac.th/en/student/student-affairs/">Student Affairs</a>;
+      <a href="https://news.ict.mahidol.ac.th/?p=24270">AUN-QA news, 2024</a>;
+      <a href="https://news.ict.mahidol.ac.th/?p=100582">Internship Abroad news, 2026</a>;
+      <a href="https://mahidol.ac.th/2026/mahidol-qsworld-2027/">Mahidol University (QS 2027)</a>;
+      <a href="https://news.ict.mahidol.ac.th/?p=59693">online interview news, 2025</a>;
+      <a href="https://data.mhesi.go.th/th/dataset/univ_std_11_03">Ministry of Higher Education open data</a>;
+      <a href="https://www.flightsfrom.com/RGN-BKK">FlightsFrom</a>.</p>
+    <p><b>Official pages:</b>
+      <a href="https://www.ict.mahidol.ac.th/en/programs/ict/">Programme and admissions</a>;
+      <a href="https://www.ict.mahidol.ac.th/en/student/information-for-international-students/">Information for international students</a>;
+      <a href="https://www.ict.mahidol.ac.th/en/frequently-asked-questions/">Frequently asked questions</a>;
+      <a href="https://www.ict.mahidol.ac.th/en/student/ict-mahidol-student-handbook/">Student handbook</a>.</p>
+    <p>Photo: Faculty of ICT, Mahidol University.</p>
+  </details>
+  <a href="#top">Back to top</a>
+</div>
+<div class="wrap"><p style="margin-top:12px">Student campaign prototype for ITLG311 Business Communication. Please confirm all details on the Faculty’s website.</p></div></footer>
 
 <div class="sticky"><a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today</a></div>
 
 <script>
 (function () {
+  var root = document.documentElement;
+  var hasIO = "IntersectionObserver" in window;
+  var animate = root.classList.contains("anim");
+  clearTimeout(window.__animGuard);
+
+  /* Nav menu */
   var menu = document.querySelector(".menu");
   var links = document.getElementById("nav-links");
   var anchors = links.querySelectorAll('a[href^="#"]');
-
   function setMenu(open) {
     links.classList.toggle("open", open);
     menu.setAttribute("aria-expanded", String(open));
   }
-
   menu.addEventListener("click", function () {
     setMenu(menu.getAttribute("aria-expanded") !== "true");
   });
@@ -363,9 +444,23 @@ footer p+p{margin-top:8px}
     if (!event.target.closest(".nav")) setMenu(false);
   });
 
-  // Highlight the nav link for the section currently on screen.
-  if ("IntersectionObserver" in window) {
-    var observer = new IntersectionObserver(function (entries) {
+  /* Reading progress bar */
+  var bar = document.querySelector(".progress");
+  var ticking = false;
+  function updateProgress() {
+    var max = root.scrollHeight - window.innerHeight;
+    bar.style.transform = "scaleX(" + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ")";
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(updateProgress); }
+  }, { passive: true });
+  window.addEventListener("resize", updateProgress, { passive: true });
+  updateProgress();
+
+  if (hasIO) {
+    /* Highlight the nav link for the section on screen */
+    var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         anchors.forEach(function (a) {
@@ -376,9 +471,66 @@ footer p+p{margin-top:8px}
     }, { rootMargin: "-45% 0px -50% 0px" });
     anchors.forEach(function (a) {
       var section = document.querySelector(a.getAttribute("href"));
-      if (section) observer.observe(section);
+      if (section) spy.observe(section);
+    });
+
+    /* Phone call-to-action: hide it over the hero and final sections */
+    var sticky = document.querySelector(".sticky");
+    var covered = { hero: true, apply: false };
+    var bottomBar = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        covered[entry.target.classList.contains("hero") ? "hero" : "apply"] = entry.isIntersecting;
+      });
+      sticky.classList.toggle("show", !covered.hero && !covered.apply);
+    });
+    bottomBar.observe(document.querySelector(".hero"));
+    bottomBar.observe(document.getElementById("apply"));
+  } else {
+    document.querySelector(".sticky").classList.add("show");
+  }
+
+  if (!animate) return;
+
+  /* Numbers count up once, and always finish on the published figure */
+  function countUp(el) {
+    var target = +el.getAttribute("data-count");
+    var finalText = el.textContent;
+    var start = null;
+    function step(now) {
+      if (start === null) start = now;
+      var p = Math.min((now - start) / 1200, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString("en-US");
+      if (p < 1) requestAnimationFrame(step); else el.textContent = finalText;
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* Reveal sections as they scroll into view */
+  var revealItems = document.querySelectorAll("[data-reveal]");
+  var observerRan = false;
+  function reveal(el) {
+    el.classList.add("in");
+    var nums = el.hasAttribute("data-count") ? [el] : [].slice.call(el.querySelectorAll("[data-count]"));
+    nums.forEach(function (n) {
+      if (!n.dataset.done) { n.dataset.done = "1"; countUp(n); }
     });
   }
+  var observer = new IntersectionObserver(function (entries) {
+    observerRan = true;
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        reveal(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  revealItems.forEach(function (el) { observer.observe(el); });
+
+  /* Safety net: never leave content hidden if the observer does not run */
+  setTimeout(function () {
+    if (!observerRan) revealItems.forEach(function (el) { el.classList.add("in"); });
+  }, 2500);
 })();
 </script>
 
