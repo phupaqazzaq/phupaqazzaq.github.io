@@ -6,6 +6,7 @@
 <title>Study ICT at Mahidol University: a page for students from Myanmar</title>
 <meta name="description" content="Student coursework prototype: an English-taught B.Sc. in ICT at Mahidol University, Thailand. World-ranked, one flat fee, close to home.">
 <meta name="robots" content="noindex">
+<script>document.documentElement.className = "js";</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{--dark:#0F3D38;--dark2:#164C46;--green:#0F6B5E;--tint:#E8F2EF;--line:#D3E2DD;--gold:#E8AE2C;--gold2:#F2BE48;--ink:#14302C;--soft:#3F524E;--mute:#566965;--on:#E3EFEB;--tuition:#007F4F;--living:#C47F00;--serif:'Source Serif 4',Georgia,serif;--sans:'Public Sans',Arial,sans-serif}
@@ -32,8 +33,19 @@ h3{font-size:21px;line-height:1.25;font-weight:700;color:var(--dark)}
 .hero img{position:absolute;top:0;right:0;width:50%;height:100%;object-fit:cover;object-position:50% 80%}
 .hero::after{content:"";position:absolute;top:0;bottom:0;right:0;width:50%;background:linear-gradient(90deg,#0F3D38 0%,rgba(15,61,56,0) 20%)}
 .hero .wrap{position:relative;z-index:1;padding-top:44px;padding-bottom:88px}
-.brand{font-family:var(--serif);font-weight:700;font-size:22px;margin-bottom:46px}
-.brand span{font-family:var(--sans);font-weight:400;font-size:15px;color:var(--on);margin-left:10px}
+.nav{position:sticky;top:0;z-index:10;background:var(--dark);box-shadow:0 2px 14px rgba(0,0,0,.25)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px}
+.logo{font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.15;color:#fff;text-decoration:none;white-space:nowrap}
+.logo small{display:block;font-family:var(--sans);font-weight:400;font-size:13px;color:var(--on)}
+.links{list-style:none;display:flex;align-items:center;gap:2px}
+.links a:not(.btn){display:block;color:var(--on);font-size:16px;font-weight:600;text-decoration:none;padding:8px 12px;border-radius:8px;transition:background .15s,color .15s}
+.links a:not(.btn):hover{background:var(--dark2);color:#fff}
+.links a[aria-current="true"]{color:var(--gold)}
+.nav .btn{font-size:16px;padding:10px 18px;margin-left:8px;white-space:nowrap}
+.menu{display:none;align-items:center;gap:9px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.65);border-radius:8px;padding:7px 12px;font:600 15px var(--sans);cursor:pointer}
+.menu i{display:block;width:18px;height:2px;background:#fff;box-shadow:0 -6px 0 #fff,0 6px 0 #fff}
+.menu:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+section[id]{scroll-margin-top:60px}
 .copy{max-width:510px}
 .deadline{display:inline-block;background:var(--gold);color:var(--ink);border-radius:20px;font-size:15px;font-weight:700;padding:5px 14px;margin-bottom:18px}
 .hero h1{color:#fff;font-size:clamp(34px,4.2vw,50px);line-height:1.06;letter-spacing:-.4px}
@@ -113,14 +125,22 @@ footer a{color:var(--on)}
 footer p+p{margin-top:8px}
 .sticky{display:none}
 
+@media (max-width:1000px){
+  .nav-in{flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+  .links{flex-wrap:wrap}
+  .js .nav-in{flex-wrap:nowrap}
+  .js .menu{display:inline-flex}
+  .js .links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--dark);padding:6px 24px 18px;box-shadow:0 12px 22px rgba(0,0,0,.28)}
+  .js .links.open{display:flex}
+  .js .links a:not(.btn){padding:12px 8px;font-size:17px;border-bottom:1px solid #2B5F58;border-radius:0}
+  .js .nav .btn{display:block;text-align:center;margin:14px 0 0}
+}
 @media (max-width:900px){
   section{padding:48px 0}
   .hero img{position:static;display:block;width:100%;height:250px;object-position:50% 74%}
   .hero::after{display:none}
   .hero .wrap{padding-top:24px}
   .copy{max-width:none}
-  .brand{margin-bottom:18px}
-  .brand span{display:none}
   .proof ul{grid-template-columns:1fr 1fr}
   .proof li:nth-child(3){border-left:0}
   .proof li:nth-child(n+3){border-top:1px solid var(--line)}
@@ -134,14 +154,26 @@ footer p+p{margin-top:8px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 </head>
-<body>
+<body id="top">
 
 <p class="notice">Student coursework prototype for ITLG311 Business Communication. Not an official Mahidol University page.</p>
+
+<nav class="nav" aria-label="Main navigation"><div class="wrap nav-in">
+  <a class="logo" href="#top">ICT Mahidol<small>B.Sc. in ICT (International Program)</small></a>
+  <button class="menu" type="button" aria-controls="nav-links" aria-expanded="false"><i aria-hidden="true"></i>Menu</button>
+  <ul class="links" id="nav-links">
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#cost">Cost</a></li>
+    <li><a href="#requirements">Entry rules</a></li>
+    <li><a href="#round2">How to apply</a></li>
+    <li><a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Apply now</a></li>
+  </ul>
+</div></nav>
 
 <header class="hero">
   <img src="https://www.ict.mahidol.ac.th/admissions/wp-content/uploads/2024/09/life-4-scaled-1.jpg" alt="Two students studying together at an outdoor table on the green Mahidol University campus">
   <div class="wrap">
-    <div class="brand">ICT Mahidol<span>B.Sc. in ICT (International Program)</span></div>
     <div class="copy">
       <p class="deadline">Round 2 closes on 31 December 2026</p>
       <h1>Want a world-ranked ICT degree without going far from home?</h1>
@@ -291,11 +323,63 @@ footer p+p{margin-top:8px}
     <a href="https://www.irrawaddy.com/?p=153181">The Irrawaddy, 2026</a>;
     <a href="https://osos.boi.go.th/EN/news/2430/Thailand-Secures-43-6bn-1H-2026-Investment-Surge-as-Big-Tec/">Thailand Board of Investment, 2026</a>;
     <a href="https://www.flightsfrom.com/RGN-BKK">FlightsFrom</a>.</p>
+  <p><b>Official pages:</b>
+    <a href="https://www.ict.mahidol.ac.th/en/programs/ict/">Programme and admissions</a>;
+    <a href="https://www.ict.mahidol.ac.th/en/student/information-for-international-students/">Information for international students</a>;
+    <a href="https://www.ict.mahidol.ac.th/en/frequently-asked-questions/">Frequently asked questions</a>;
+    <a href="https://www.ict.mahidol.ac.th/en/student/ict-mahidol-student-handbook/">Student handbook</a>.</p>
   <p>Photo: Faculty of ICT, Mahidol University.</p>
   <p>Student campaign prototype for ITLG311 Business Communication. Please confirm all details on the Faculty’s website.</p>
+  <p><a href="#top">Back to top</a></p>
 </div></footer>
 
 <div class="sticky"><a class="btn primary" href="https://www.ict.mahidol.ac.th/en/ict-international-direct-admissions-academic-year-2027/">Check requirements and apply today</a></div>
+
+<script>
+(function () {
+  var menu = document.querySelector(".menu");
+  var links = document.getElementById("nav-links");
+  var anchors = links.querySelectorAll('a[href^="#"]');
+
+  function setMenu(open) {
+    links.classList.toggle("open", open);
+    menu.setAttribute("aria-expanded", String(open));
+  }
+
+  menu.addEventListener("click", function () {
+    setMenu(menu.getAttribute("aria-expanded") !== "true");
+  });
+  links.addEventListener("click", function (event) {
+    if (event.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && menu.getAttribute("aria-expanded") === "true") {
+      setMenu(false);
+      menu.focus();
+    }
+  });
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".nav")) setMenu(false);
+  });
+
+  // Highlight the nav link for the section currently on screen.
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        anchors.forEach(function (a) {
+          if (a.getAttribute("href") === "#" + entry.target.id) a.setAttribute("aria-current", "true");
+          else a.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    anchors.forEach(function (a) {
+      var section = document.querySelector(a.getAttribute("href"));
+      if (section) observer.observe(section);
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
