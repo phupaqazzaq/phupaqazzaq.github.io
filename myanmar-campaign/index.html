@@ -230,6 +230,67 @@ section.band{padding-block:96px}
 .chip:hover{color:var(--white);border-color:var(--on-navy-muted)}
 .chip[aria-pressed="true"]{color:var(--navy-deep);background:var(--gold-hi);border-color:var(--gold-hi)}
 .fields .note{font-size:var(--s-xs);color:var(--on-navy-muted)}
+.area-card{min-height:330px}
+.area-card .tag i,.chip i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px}
+.area-card .lbl2{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--gold-hi);margin-top:4px}
+.courses{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px;font-size:.86rem;color:var(--on-navy)}
+.courses li{display:flex;gap:8px;line-height:1.4;min-width:0}
+.courses li::before{content:"";flex:none;width:5px;height:5px;margin-top:.5em;background:var(--teal-hi);transform:rotate(45deg)}
+@media (max-width:520px){.courses{grid-template-columns:minmax(0,1fr)}}
+.chip b{font-weight:600;margin-right:5px}
+.chip[aria-pressed="true"] i{box-shadow:0 0 0 2px var(--navy-deep)}
+.nlabel b{font-weight:700;margin-right:3px}
+
+/* ---------- one scroll, one page (desktop) ---------- */
+:root{--navH:64px;--noticeH:30px}
+.hero-page{display:flex;flex-direction:column}
+html.fp{scroll-behavior:auto}
+html.fp [data-page]{min-height:calc(100vh - var(--navH));display:flex;flex-direction:column;justify-content:center}
+html.fp .hero-page{min-height:calc(100vh - var(--navH) - var(--noticeH));justify-content:flex-start}
+html.fp .hero-page .hero{flex:1;display:flex;align-items:center}
+html.fp .hero-grid{width:100%;min-height:0;padding-block:16px 84px}
+html.fp .hero-copy{gap:16px}
+html.fp .hero h1{font-size:clamp(2.3rem,4.6vw,3.9rem)}
+html.fp .globe-slot{max-width:min(600px,calc(100vh - var(--navH) - var(--noticeH) - 250px))}
+html.fp .proof .p{padding:18px 22px}
+html.fp .proof .big{font-size:clamp(1.8rem,3vw,2.3rem)}
+html.fp .footnote{margin-top:6px}
+html.fp .proof-wrap{padding-bottom:20px}
+html.fp section.band{padding-block:32px}
+html.fp .sec-head{max-width:none;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:48px;row-gap:10px;align-items:end;margin-bottom:24px}
+html.fp .sec-head>*{grid-column:1}
+html.fp .sec-head>p{grid-column:2;grid-row:2}
+html.fp .tilt{padding:20px 22px;gap:8px}
+html.fp .tilt h3{font-size:1.4rem}
+html.fp .tilt p{font-size:.86rem;line-height:1.55}
+html.fp .parent-line{padding-top:10px}
+@media (min-width:1100px){html.fp .cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+html.fp .lab{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+html.fp .const-stage{max-width:min(540px,calc(100vh - 300px))}
+html.fp .area-card{min-height:0;padding:22px;gap:8px}
+html.fp .area-card p{font-size:.88rem}
+html.fp .lab-panel{gap:14px}
+html.fp .checker{padding:24px;gap:14px}
+html.fp .steps li{padding-bottom:12px}
+html.fp .steps p{font-size:.85rem;line-height:1.55}
+html.fp .seats{padding:10px 14px}
+html.fp .apply-grid{gap:24px}
+html.fp .checker h3{font-size:1.5rem}
+html.fp .checker fieldset{gap:6px}
+html.fp .seg label{padding:7px 12px}
+html.fp .result{padding:12px 14px}
+html.fp .final .wrap{padding-block:48px}
+.pager{position:fixed;right:max(20px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:45;display:none;flex-direction:column;gap:14px;padding:12px 8px;border-radius:999px;background:rgba(6,26,58,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+html.fp .pager{display:flex}
+.pager button{position:relative;width:11px;height:11px;border-radius:50%;border:2px solid var(--gold-hi);background:transparent;padding:0;cursor:pointer;transition:transform .25s,background .25s}
+.pager button:hover{transform:scale(1.25)}
+.pager button[aria-current="true"]{background:var(--gold-hi);transform:scale(1.35)}
+.pager button span{position:absolute;right:24px;top:50%;transform:translateY(-50%) translateX(6px);white-space:nowrap;font:500 11px var(--f-body);background:var(--navy);color:var(--white);padding:4px 10px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.pager button:hover span,.pager button:focus-visible span{opacity:1;transform:translateY(-50%)}
+.pager .count{font-family:var(--f-mono);font-size:10px;color:var(--white);text-align:center;margin-top:2px;letter-spacing:.04em}
+@keyframes rvIn{from{opacity:0;transform:translateY(42px)}to{opacity:1;transform:translateY(0)}}
+html.rv-on [data-page]:not(.in) .rv{opacity:0}
+html.rv-on [data-page].in .rv{animation:rvIn .95s cubic-bezier(.2,.7,.2,1) var(--d,0s) backwards}
 
 /* ---------- FEES ---------- */
 .fee-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
@@ -317,6 +378,8 @@ footer h4{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-tran
 </header>
 
 <main id="top">
+<nav class="pager" id="pager" aria-label="Page sections"></nav>
+<div class="hero-page" data-page data-label="Welcome">
 <!-- HERO -->
 <section class="hero" id="hero">
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
@@ -366,9 +429,10 @@ footer h4{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-tran
     <p class="footnote"><b>*</b> QS World University Rankings 2027</p>
   </div>
 </div>
+</div>
 
 <!-- VALUES -->
-<section class="band" id="values">
+<section class="band" id="values" data-page data-label="What Mahidol stands for">
   <div class="wrap values">
     <div class="quote">
       <span class="eyebrow">What Mahidol stands for</span>
@@ -388,7 +452,7 @@ footer h4{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-tran
 </section>
 
 <!-- WHY -->
-<section class="band why" id="why">
+<section class="band why" id="why" data-page data-label="Why MUICT">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Why MUICT</span>
@@ -426,7 +490,7 @@ footer h4{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-tran
 </section>
 
 <!-- COMMUNITY -->
-<section class="band community" aria-labelledby="commH">
+<section class="band community" id="community" aria-labelledby="commH" data-page data-label="Community">
   <div class="wrap">
     <div>
       <span class="eyebrow">You won't be starting alone</span>
@@ -449,31 +513,33 @@ footer h4{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-tran
 </section>
 
 <!-- FIELDS -->
-<section class="band fields" id="fields">
+<section class="band fields" id="fields" data-page data-label="Specialisations">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Find your field</span>
-      <h2>Explore the Faculty's research areas.</h2>
-      <p>Drag the network to rotate it, then tap a node or a button to see what you could work on. Each area is listed on the Faculty's official research page.</p>
+      <h2>Explore the 8 specialisations.</h2>
+      <p>Drag the network to rotate it, then tap a node or a code to see the courses you would take and where they can lead.</p>
     </div>
     <div class="lab">
-      <div class="const-stage" id="constStage" aria-label="Interactive 3D network of research areas. Use the buttons beside it to choose an area."></div>
+      <div class="const-stage" id="constStage" aria-label="Interactive 3D network of the eight specialisations. Use the buttons beside it to choose one."></div>
       <div class="lab-panel">
         <div class="area-card" aria-live="polite">
-          <span class="tag" id="areaTag">RESEARCH AREA 1 OF 9</span>
-          <h3 id="areaTitle">Artificial Intelligence</h3>
+          <span class="tag" id="areaTag"><i></i>CS · SPECIALISATION 1 OF 8</span>
+          <h3 id="areaTitle">Computer Science</h3>
           <p id="areaDesc"></p>
+          <span class="lbl2">SPECIALTY COURSES</span>
+          <ul class="courses" id="areaCourses"></ul>
           <p class="roles" id="areaRoles"></p>
         </div>
-        <div class="chips" id="areaChips" role="group" aria-label="Research areas"></div>
-        <p class="note">The B.Sc. in ICT offers eight specialisation tracks: four core and four applied. Check the official curriculum page for the current track names.</p>
+        <div class="chips" id="areaChips" role="group" aria-label="Specialisations"></div>
+        <p class="note">Every student takes at least 18 credits of specialisation courses. Earn 15 credits in one specialisation and you receive a minor in it.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FEES -->
-<section class="band" id="fees">
+<section class="band" id="fees" data-page data-label="Fees">
   <div class="wrap fee-grid">
     <div class="fee-copy">
       <span class="eyebrow">Plan with certainty</span>
@@ -501,7 +567,7 @@ footer h4{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-tran
 </section>
 
 <!-- APPLY -->
-<section class="band apply" id="apply">
+<section class="band apply" id="apply" data-page data-label="Apply">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Apply from home</span>
@@ -547,7 +613,7 @@ footer h4{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-tran
 </section>
 
 <!-- FINAL -->
-<section class="final" aria-labelledby="finalH">
+<section class="final" id="deadline" aria-labelledby="finalH" data-page data-label="Round 2 deadline">
   <div class="wrap">
     <span class="eyebrow">Round 2 deadline</span>
     <h2 id="finalH">Your place at Salaya is waiting. <em>Apply by 31 December.</em></h2>
@@ -582,7 +648,7 @@ footer h4{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-tran
         <li><a href="https://www.ict.mahidol.ac.th/en/" target="_blank" rel="noopener">Faculty of ICT home page</a></li>
         <li><a href="https://www.ict.mahidol.ac.th/en/programs/bachelor-of-science-in-ict/" target="_blank" rel="noopener">B.Sc. in ICT programme page</a></li>
         <li><a href="https://www.ict.mahidol.ac.th/en/programs/ict/" target="_blank" rel="noopener">B.Sc. in ICT admissions page</a></li>
-        <li><a href="https://www.ict.mahidol.ac.th/en/ict-research/" target="_blank" rel="noopener">ICT research areas</a></li>
+        <li><a href="https://www.ict.mahidol.ac.th/en/programs/bachelor-of-science-in-ict-revised-program/" target="_blank" rel="noopener">B.Sc. in ICT specialisations (Revised Program B.E. 2566)</a></li>
         <li><a href="https://www.ict.mahidol.ac.th/en/facilities/" target="_blank" rel="noopener">Facilities</a></li>
       </ul>
     </div>
@@ -701,6 +767,86 @@ document.getElementById("copyMail").addEventListener("click",function(){
   const sel=()=>{const r=document.createRange();r.selectNodeContents(mail);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected";};
   try{ navigator.clipboard.writeText(mail.textContent).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1600);},sel); }catch(e){ sel(); }
 });
+
+/* ---------- pages: reveal on entry + one scroll per page on desktop ---------- */
+(function(){
+  const root=document.documentElement, nav=document.querySelector(".nav"), notice=document.querySelector(".notice");
+  const pages=[...document.querySelectorAll("[data-page]")];
+  // staggered reveal of each page's content
+  const parts=".hero-copy > *, .proof, .quote > *, .values > div:last-child, .sec-head > *, .cards > *, .community .wrap > div, .lab > *, .fee-grid > *, .apply-grid > *, .final .wrap > *";
+  pages.forEach(p=>{ [...p.querySelectorAll(parts)].forEach((el,i)=>{ el.classList.add("rv"); el.style.setProperty("--d",Math.min(i*.09,.8).toFixed(2)+"s"); }); });
+  if(!reduce && "IntersectionObserver" in window){
+    root.classList.add("rv-on");
+    const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("in"); }),{rootMargin:"0px 0px -22% 0px"});
+    pages.forEach(p=>io.observe(p));
+  }
+  pages[0].classList.add("in");
+
+  // pager dots
+  const pager=document.getElementById("pager");
+  const dots=pages.map((p,i)=>{ const b=document.createElement("button"); b.type="button"; b.innerHTML="<span>"+p.dataset.label+"</span>"; b.setAttribute("aria-label",p.dataset.label); b.addEventListener("click",()=>go(i)); pager.appendChild(b); return b; });
+  const count=document.createElement("div"); count.className="count"; pager.appendChild(count);
+  function mark(i){ dots.forEach((d,k)=>d.setAttribute("aria-current",k===i)); count.textContent=String(i+1).padStart(2,"0")+"/"+String(pages.length).padStart(2,"0"); }
+
+  const fpQuery=window.matchMedia("(min-width: 900px) and (min-height: 560px) and (hover: hover) and (pointer: fine)");
+  let fp=false, animating=false, quiet=false, lastWheel=0, cur=0;
+  const navH=()=>nav.offsetHeight;
+  const absTop=i=>pages[i].getBoundingClientRect().top+scrollY;
+  const topOf=i=>i===0?0:Math.max(0,Math.round(absTop(i)-navH()));
+  function current(){ const line=scrollY+navH()+(innerHeight-navH())*.4; let k=0; pages.forEach((p,i)=>{ if(absTop(i)<=line) k=i; }); return k; }
+  function setVars(){ root.style.setProperty("--navH",nav.offsetHeight+"px"); root.style.setProperty("--noticeH",notice.offsetHeight+"px"); }
+  function setMode(){ fp=fpQuery.matches && !reduce; root.classList.toggle("fp",fp); setVars(); }
+  setMode();
+  try{ fpQuery.addEventListener("change",setMode); }catch(e){ fpQuery.addListener(setMode); }
+  window.addEventListener("resize",setVars);
+  window.addEventListener("load",setVars);
+  if("ResizeObserver" in window){ const ro=new ResizeObserver(setVars); ro.observe(nav); ro.observe(notice); }
+
+  function go(i){
+    i=Math.max(0,Math.min(pages.length-1,i)); cur=i; mark(i); pages[i].classList.add("in");
+    const from=scrollY, to=topOf(i);
+    if(Math.abs(to-from)<2) return;
+    if(reduce){ window.scrollTo(0,to); return; }
+    const t0=performance.now(), dur=900, ease=k=>k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+    animating=true;
+    (function step(t){ const k=Math.min(1,(t-t0)/dur); window.scrollTo(0,from+(to-from)*ease(k)); if(k<1) requestAnimationFrame(step); else { animating=false; quiet=true; } })(t0);
+  }
+  window.__fpGo=i=>{ if(fp) go(i); else return false; };
+
+  function step(dir,e){
+    const i=current(), r=pages[i].getBoundingClientRect();
+    // a page that is taller than the screen scrolls normally until its edge is reached
+    if(dir>0){ if(r.bottom>innerHeight+16) return; if(i<pages.length-1){ e.preventDefault(); go(i+1); } }
+    else { if(r.top<(i===0?0:navH())-16) return; if(i>0){ e.preventDefault(); go(i-1); } }
+  }
+  window.addEventListener("wheel",e=>{
+    if(!fp || e.ctrlKey) return;
+    const now=performance.now(), gap=now-lastWheel; lastWheel=now;
+    if(animating){ e.preventDefault(); return; }
+    if(quiet){ if(gap<220){ e.preventDefault(); return; } quiet=false; }
+    if(Math.abs(e.deltaY)<3 || Math.abs(e.deltaX)>Math.abs(e.deltaY)) return;
+    step(e.deltaY>0?1:-1,e);
+  },{passive:false});
+  window.addEventListener("keydown",e=>{
+    if(!fp) return;
+    if(animating && /^(PageDown|PageUp|ArrowDown|ArrowUp| |Home|End)$/.test(e.key)){ e.preventDefault(); return; }
+    if(e.target.closest && e.target.closest("input,textarea,select,button,[contenteditable]")) return;
+    if(e.key==="PageDown"||e.key==="ArrowDown"||(e.key===" "&&!e.shiftKey)) step(1,e);
+    else if(e.key==="PageUp"||e.key==="ArrowUp"||(e.key===" "&&e.shiftKey)) step(-1,e);
+    else if(e.key==="Home"){ e.preventDefault(); go(0); }
+    else if(e.key==="End"){ e.preventDefault(); go(pages.length-1); }
+  });
+  // in-page links glide to their page
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{
+    if(!fp) return; const id=a.getAttribute("href").slice(1); const t=id==="top"?pages[0]:document.getElementById(id); if(!t) return;
+    const p=t.closest("[data-page]"); const i=pages.indexOf(p); if(i<0) return; e.preventDefault(); go(i);
+  }));
+  // fallback for the reveal: anything scrolled into view is shown even if the observer never fires
+  const showSeen=()=>pages.forEach(p=>{ if(p.getBoundingClientRect().top<innerHeight*.85) p.classList.add("in"); });
+  let ticking=false;
+  window.addEventListener("scroll",()=>{ if(ticking) return; ticking=true; setTimeout(()=>{ ticking=false; showSeen(); if(!animating){ const i=current(); if(i!==cur){ cur=i; mark(i); } } },80); },{passive:true});
+  showSeen(); mark(current());
+})();
 
 /* ================= 3D ================= */
 if (typeof THREE==="undefined") return;
@@ -856,7 +1002,7 @@ function newRenderer(canvas){
   function setRoutes(on){ routesOn=on; btn.setAttribute("aria-pressed",on); const v=on?WORLD:HOME; target.spin=v.spin; target.tilt=v.tilt; target.zoom=on?1.22:1; routesT=performance.now();
     routes.forEach(r=>{ r.mesh.visible=r.mk.visible=on; r.lab.on=on; r.u.uDraw.value=0; }); }
   btn.addEventListener("click",()=>setRoutes(!routesOn));
-  document.getElementById("showRoutesLink").addEventListener("click",()=>{ setRoutes(true); slot.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"}); });
+  document.getElementById("showRoutesLink").addEventListener("click",()=>{ setRoutes(true); if(window.__fpGo(0)===false) slot.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"}); });
   slot.addEventListener("pointerdown",e=>{ if(e.target.closest("button")) return; dragging=true; lx=e.clientX; ly=e.clientY; vSpin=vTilt=0; slot.setPointerCapture(e.pointerId); });
   slot.addEventListener("pointermove",e=>{ if(!dragging) return; const dx=e.clientX-lx, dy=e.clientY-ly; lx=e.clientX; ly=e.clientY; vSpin=dx*.0075; vTilt=dy*.006; target.spin+=vSpin; target.tilt=Math.max(-1.1,Math.min(1.1,target.tilt+vTilt)); idleAt=performance.now(); });
   const end=()=>{ dragging=false; idleAt=performance.now(); };
@@ -911,24 +1057,25 @@ function newRenderer(canvas){
 
 /* ---------- RESEARCH CONSTELLATION ---------- */
 (function(){
+  // The 8 specialisations of the B.Sc. in ICT (Revised Program B.E. 2566), colours as in the student portal
   const AREAS=[
-    {t:"Artificial Intelligence",s:"AI",d:"Teach computers to recognise patterns, understand language and support decisions. Linked to the Faculty's machine intelligence and knowledge engineering cluster.",r:"Machine learning engineer, AI developer, data scientist"},
-    {t:"Cybersecurity & IoT",s:"Cybersecurity & IoT",d:"Protect networks, data and the connected devices people use every day, from smart homes to hospitals.",r:"Security analyst, penetration tester, IoT engineer"},
-    {t:"Software Engineering",s:"Software Eng.",d:"Design, build and test reliable software as part of a team, from first idea to finished product.",r:"Software engineer, full-stack developer, QA engineer"},
-    {t:"Business Intelligence & Analytics",s:"Business Analytics",d:"Turn raw data into dashboards and insights that help organisations make better decisions.",r:"Business analyst, BI developer, data analyst"},
-    {t:"Databases",s:"Databases",d:"Organise, store and query information at scale so apps and services stay fast and dependable.",r:"Database administrator, data engineer"},
-    {t:"Networking",s:"Networking",d:"Connect systems across campuses, cities and clouds, and keep them running.",r:"Network engineer, cloud engineer"},
-    {t:"Digital Image Processing",s:"Image Processing",d:"Help computers see: enhance, analyse and understand images and video.",r:"Computer vision engineer, imaging specialist"},
-    {t:"Computer Graphics & Animation",s:"Graphics & Animation",d:"Create 3D worlds, games and visual effects. The interactive 3D on this page is built with the same ideas.",r:"Graphics programmer, game developer, technical artist"},
-    {t:"Medical Informatics",s:"Medical Informatics",d:"Apply computing to health care, from patient records to tools that support doctors. A natural fit at a university rooted in medicine.",r:"Health informatics specialist, health-tech developer"}
+    {k:"CS",t:"Computer Science",s:"Computer Science",c:"#f2665a",d:"Apply computer science theory to real-world problems, from algorithm analysis to programming languages and the theory of computation.",co:["Foundations in Computer Science","Algorithms Design and Analysis","Principles of Compiler Design","Theory of Computation"],r:"Computer scientist, data scientist, computer science educator"},
+    {k:"DB",t:"Database Systems",s:"Database Systems",c:"#f29a2e",d:"Design and manage databases, then apply them to real problems such as big data, data warehousing and business intelligence.",co:["Database Design","Advanced Database System","Introduction to Big Data Management","Information Retrieval and Text Mining"],r:"Database administrator, data engineer"},
+    {k:"NS",t:"Network and Security",s:"Network & Security",c:"#e8dc5a",d:"Build and protect modern networks, including cloud computing, wireless and IoT networking, and advanced cybersecurity.",co:["Cloud Computing Systems, Services and Applications","Embedded Systems and Internet of Things","Advanced Cybersecurity","Internet of Things Security and Privacy"],r:"Network and server administrator, cyber security system analyst"},
+    {k:"SE",t:"Software Engineering",s:"Software Engineering",c:"#3cc45a",d:"Develop software systematically: requirements, design, implementation, code review, testing and Agile or Scrum teamwork.",co:["Practical Software Engineering","Software Requirement Engineering","Software Design and Architecture","Software Process and Quality Assurance"],r:"Software engineer, software developer, software tester, system analyst"},
+    {k:"HT",t:"Health Information Technology",s:"Health IT",c:"#3fe0b8",d:"Use information technology to deliver quality health care, from clinical information systems to privacy and security of health data.",co:["Introduction to Healthcare Systems","Information Technology for Healthcare Services","Information Models and Healthcare Information Standards","Practical Healthcare Management"],r:"Health IT developer, healthcare systems analyst"},
+    {k:"MT",t:"Interactive Multimedia Technology",s:"Interactive Multimedia",c:"#6cb8f0",d:"Create interactive systems with computer graphics, digital storytelling, virtual reality and game technology. The 3D on this page uses the same ideas.",co:["Computer Graphics","Digital Storytelling and Visual Design","Virtual Reality","Technology for Game Development"],r:"Multimedia developer, game developer, user experience designer"},
+    {k:"IS",t:"Information Systems Management",s:"Information Systems",c:"#9b7cf0",d:"Use information systems to support and improve how organisations work, from business processes to experience design.",co:["Information Systems Management","Information and Business Process Management","Introduction to Experience Design","Data Warehousing and Business Intelligence"],r:"System analyst and designer, corporate architecture designer, e-business system developer"},
+    {k:"AI",t:"Artificial Intelligence",s:"Artificial Intelligence",c:"#f25cc8",d:"Learn the core of AI and apply it to practical problems in many fields.",co:["Introduction to Machine Learning","Deep Learning","Introduction to Natural Language Processing","Introduction to Computer Vision"],r:"Data scientist, machine learning engineer, AI developer"}
   ];
   const stage=document.getElementById("constStage"), chips=document.getElementById("areaChips");
   let select=()=>{};
-  AREAS.forEach((a,i)=>{ const b=document.createElement("button"); b.type="button"; b.className="chip"; b.textContent=a.s; b.setAttribute("aria-pressed","false"); b.addEventListener("click",()=>select(i)); chips.appendChild(b); });
+  AREAS.forEach((a,i)=>{ const b=document.createElement("button"); b.type="button"; b.className="chip"; b.innerHTML='<i style="background:'+a.c+'"></i><b>'+a.k+'</b>'+a.s; b.setAttribute("aria-pressed","false"); b.addEventListener("click",()=>select(i)); chips.appendChild(b); });
   function showText(i){ const a=AREAS[i];
-    document.getElementById("areaTag").textContent="RESEARCH AREA "+(i+1)+" OF "+AREAS.length;
+    document.getElementById("areaTag").innerHTML='<i style="background:'+a.c+'"></i>'+a.k+" · SPECIALISATION "+(i+1)+" OF "+AREAS.length;
     document.getElementById("areaTitle").textContent=a.t; document.getElementById("areaDesc").textContent=a.d;
-    document.getElementById("areaRoles").innerHTML="<span>CAREER PATHS</span>"+a.r;
+    document.getElementById("areaCourses").innerHTML=a.co.map(x=>"<li>"+x+"</li>").join("");
+    document.getElementById("areaRoles").innerHTML="<span>EXAMPLE CAREERS</span>"+a.r;
     chips.querySelectorAll(".chip").forEach((c,k)=>c.setAttribute("aria-pressed",k===i)); }
   select=showText; showText(0);
   const canvas=document.createElement("canvas"); stage.appendChild(canvas);
@@ -943,13 +1090,13 @@ function newRenderer(canvas){
   for(let i=0;i<N;i++){ const y=1-(i+.5)/N*2, r=Math.sqrt(1-y*y), th=i*Math.PI*(3-Math.sqrt(5)); dirs.push(new THREE.Vector3(Math.cos(th)*r,y,Math.sin(th)*r).normalize()); }
   dirs.forEach((d,i)=>{
     const p=d.clone().multiplyScalar(Rn);
-    const m=new THREE.Mesh(new THREE.IcosahedronGeometry(.09,0),new THREE.MeshBasicMaterial({color:C.teal})); m.position.copy(p);
-    const h=new THREE.Sprite(new THREE.SpriteMaterial({map:DOT,color:C.teal,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false})); h.scale.setScalar(.42); m.add(h); m.userData.halo=h;
+    const m=new THREE.Mesh(new THREE.IcosahedronGeometry(.1,0),new THREE.MeshBasicMaterial({color:AREAS[i].c})); m.position.copy(p);
+    const h=new THREE.Sprite(new THREE.SpriteMaterial({map:DOT,color:AREAS[i].c,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false})); h.scale.setScalar(.42); m.add(h); m.userData.halo=h;
     const hit=new THREE.Mesh(new THREE.SphereGeometry(.24,8,8),new THREE.MeshBasicMaterial({visible:false})); hit.position.copy(p); hit.userData.i=i;
     group.add(m,hit); nodes.push(m); hits.push(hit);
     edge.push(0,0,0,p.x*.62,p.y*.62,p.z*.62);
     dirs.map((o,k)=>({k,d:o.distanceTo(d)})).filter(o=>o.k>i).sort((a,b)=>a.d-b.d).slice(0,2).forEach(o=>{ const q=dirs[o.k].clone().multiplyScalar(Rn); edge.push(p.x,p.y,p.z,q.x,q.y,q.z); });
-    const el=document.createElement("div"); el.className="nlabel"; el.textContent=AREAS[i].s; el.setAttribute("aria-hidden","true"); stage.appendChild(el); labels.push(el);
+    const el=document.createElement("div"); el.className="nlabel"; el.innerHTML='<b style="color:'+AREAS[i].c+'">'+AREAS[i].k+'</b> '+AREAS[i].s; el.setAttribute("aria-hidden","true"); stage.appendChild(el); labels.push(el);
   });
   const eg=new THREE.BufferGeometry(); eg.setAttribute("position",new THREE.Float32BufferAttribute(edge,3));
   group.add(new THREE.LineSegments(eg,new THREE.LineBasicMaterial({color:"#7fa6e8",transparent:true,opacity:.28})));
@@ -962,7 +1109,7 @@ function newRenderer(canvas){
   let current=0, aim=null, dragging=false, moved=0, lx=0, ly=0, vx=0, vy=0, hover=-1;
   const Z=new THREE.Vector3(.42,.3,1).normalize();
   select=i=>{ current=i; showText(i); aim=new THREE.Quaternion().setFromUnitVectors(dirs[i],Z);
-    nodes.forEach((m,k)=>{ const on=k===i; m.material.color.set(on?C.gold:C.teal); m.userData.halo.material.color.set(on?C.gold:C.teal); m.scale.setScalar(on?1.7:1); labels[k].classList.toggle("on",on); }); };
+    nodes.forEach((m,k)=>{ const on=k===i; m.scale.setScalar(on?1.8:1); m.userData.halo.material.opacity=on?.95:.5; labels[k].classList.toggle("on",on); }); };
   select(0);
   const ray=new THREE.Raycaster(), ndc=new THREE.Vector2();
   const pick=e=>{ const r=stage.getBoundingClientRect(); ndc.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1); ray.setFromCamera(ndc,cam); const h=ray.intersectObjects(hits); return h.length?h[0].object.userData.i:-1; };
