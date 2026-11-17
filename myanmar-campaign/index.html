@@ -126,6 +126,7 @@ p{margin:0}
 .toggle[aria-pressed="true"] .sw{background:rgba(79,209,197,.35)}
 .toggle[aria-pressed="true"] .sw::after{transform:translateX(12px);background:var(--teal-hi)}
 .hint{font-size:11px;color:var(--on-navy-muted)}
+@media (max-width:600px){.pass,.hint{display:none}.globe-ctl{bottom:0}.readout{bottom:-6%}}
 .glabel{position:absolute;left:0;top:0;opacity:0;font-size:11px;font-weight:500;white-space:nowrap;padding:3px 9px;border-radius:6px;background:rgba(6,26,58,.8);border:1px solid var(--navy-line);color:var(--on-navy);transition:opacity .3s;will-change:transform}
 .glabel.y{color:var(--gold-hi);border-color:rgba(230,196,106,.55)}
 .glabel.s{color:var(--teal-hi);border-color:rgba(79,209,197,.55)}
@@ -207,7 +208,7 @@ section.band{padding-block:96px}
 .flight-line .t{color:var(--teal)}
 
 /* ---------- FIELDS (navy band) ---------- */
-.fields{background:linear-gradient(180deg,var(--navy-deep),var(--navy));color:var(--on-navy)}
+.fields{background:linear-gradient(180deg,var(--navy-deep),var(--navy));color:var(--on-navy);overflow:hidden}
 .fields h2{color:var(--white)}
 .fields .sec-head p{color:var(--on-navy-muted)}
 .fields .eyebrow{color:var(--teal-hi)}
@@ -983,7 +984,8 @@ function newRenderer(canvas){
     renderer.render(scene,cam); group.updateMatrixWorld();
     nodes.forEach((m,k)=>{ m.getWorldPosition(wp); const depth=(wp.z+Rn)/(2*Rn); const p=wp.clone().project(cam);
       labels[k].style.opacity=(k===current?1:.25+.75*depth).toFixed(2);
-      labels[k].style.transform="translate("+((p.x*.5+.5)*w+12).toFixed(1)+"px,"+((-p.y*.5+.5)*h-8).toFixed(1)+"px)"; });
+      const lx2=(p.x*.5+.5)*w, ly2=(-p.y*.5+.5)*h-8, lw=labels[k].offsetWidth;
+      labels[k].style.transform = lx2+12+lw>w ? "translate("+(lx2-12).toFixed(1)+"px,"+ly2.toFixed(1)+"px) translateX(-100%)" : "translate("+(lx2+12).toFixed(1)+"px,"+ly2.toFixed(1)+"px)"; });
   };
   watch(stage,s); s.resize();
 })();
